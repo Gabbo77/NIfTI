@@ -244,30 +244,32 @@ La funcion lsfit estima los parámetros en la regresión lineal.
   ` output <- lsfit(cbind(visual.hrf, auditory.hrf), x) ` 
   
 ## extraer los valores 
+
 Se extraen los valores t-statistic, p-values para cada voxel (voxelwise). Se calculan sus valores p asociados de acuerdo a la prueba de hipótesis de ausencia de efecto para cada estímulo individual, 
 junto con una estadística F para la prueba de hipótesis de ningún efecto de cualquier estímulo usando la función ls.print.
 
   ` output.t <- ls.print(output, print.it=FALSE)$coef.table[[1]][2:3,3:4] `
    
- ` output.f <- ls.print(output, print.it=FALSE)$summary[3]
-  
-  c(output.t, as.numeric(output.f))
-} `
+ ` output.f <- ls.print(output, print.it=FALSE)$summary[3] `
+  
+ ` c(output.t, as.numeric(output.f)) `
+ 
+ `} `
 
 Finalmente, se aplica el GLM a cada voxel. 
 
-`ffd.glm <- apply(ffd, 1:3, voxel.lsfit, thresh=0.1 * max(ffd))`
+` ffd.glm <- apply(ffd, 1:3, voxel.lsfit, thresh=0.1 * max(ffd)) `
 
 #### numero 21: zstat1
 
 Los valores t se trasforman a valores z en cada una de las condiciones. Se extrae el valor maximo de las dimensiones del objeto NIfTI usando al función "ntim".
 Se crean las imagenes nifti de los valore z de cada condicion. 
 
-`dof <- ntim(ffd) - 1`
+` dof <- ntim(ffd) - 1 `
 
-`Z.visual <- nifti(qnorm(pt(ffd.glm[1,,,], dof, log.p=TRUE), log.p=TRUE), datatype=16)`
+` Z.visual <- nifti(qnorm(pt(ffd.glm[1,,,], dof, log.p=TRUE), log.p=TRUE), datatype=16) `
 
-`Z.auditory <- nifti(qnorm(pt(ffd.glm[2,,,], dof, log.p=TRUE), log.p=TRUE), datatype=16)`
+` Z.auditory <- nifti(qnorm(pt(ffd.glm[2,,,], dof, log.p=TRUE), log.p=TRUE), datatype=16) `
 
 #### numero 22: zstat1-png
 Se guardan las imagenes en formato JPEG
