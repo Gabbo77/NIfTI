@@ -31,7 +31,7 @@ y con "file.path" la ruta donde se encentra nuestro archivo almacenado, indicand
 
 fname <- system.file(file.path("nifti", "mniLR.nii.gz"), package="oro.nifti")
 
-Ahora leemos el archivo NIfTI que hemos declarado previamente con la funcion "readNIfTI". 
+Ahora leeremos el archivo NIfTI que hemos declarado previamente con la funcion "readNIfTI". 
 El uso de los  parentesis permite que se muestre el resultado de la operacion realizada en R.
 
 (mniLR <- readNIfTI(fname))
@@ -223,11 +223,9 @@ plot(index, auditory.hrf, type="l", lwd=2, xlab="Acquisition Index", ylab="Audit
 
 dev.off()
 
-
-
 #### numero 20: ffd-glm
 
-## Reducir tamaño
+## Reducción de tamaño
 
 Se suguiere reducir el tamaño a la mitad de las matrices por ue el almacenamiento de los datos es limitado. 
 
@@ -305,7 +303,6 @@ overlay(ffd, ifelse(Z.auditory > 5, Z.auditory, NA), zlim.x=range(ffd)*0.95, zli
 
 dev.off()
 
-
 ### cargar archivos nifti propios de tu carpeta de trabajo 
 Primero saber donde estamos trabajando y se suguiere que el archivo NIfTI que vayamos a leer se encuentre en la misma carpeta y sino es asi obtener la ruta donde se encuentra dicho archivo.
 
@@ -325,4 +322,5 @@ orthographic(funcional_imagen, col = 'orange')
 
 # para guardar el archivo de R en la carpeta de tabajo 
 Una vez cargada nuestra imagen la podemos manipular para realizar diferentes operaciones, y finalmente se guarda de la forma convencional utilizando "writeNIfTI", asignandole el nombre del archivo deseado. 
+
 writeNIfTI(funcional_imagen, "funcional_final")
