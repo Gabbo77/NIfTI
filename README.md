@@ -1,5 +1,5 @@
 # NIfTI
-Uso de libreria(oro.nifti)
+Uso de librería "oro.nifti" en R 
 
 ### Codigo
 
@@ -14,11 +14,11 @@ library("splines")
 
 library("oro.nifti") 
 
-Podermos cambiar como el se muestra el prompt  en nuestra Consola. Para ello utilizamos "options"
-esta opcion modifica la forma en la que R realiza los calculos y los muestra en la consola. 
-En el caso del prompt el argumento que coloquemos debe de finalizar con un espacio. 
+Podermos cambiar como se muestra el prompt en nuestra Consola. Para ello utilizamos "options"
+esta opción modifica la forma en la que R realiza los calculos y los muestra en la consola. 
+En el caso del prompt el argumento que coloquemos debe de finalizar con un espacio. (Puedes poner tu nombre) esto es util cuando estas generando un codigo y la quieres compartir con alguien más, entonces puedes compartir tu codigo y  tu prompt se mostrara con tu nombre. 
 
-options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
+options(prompt = "Gabbo77> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
 
 options(niftiAuditTrail = TRUE)
 
